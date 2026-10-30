@@ -1,0 +1,5 @@
+node_modules/
+dist/
+package-lock.json
+make_images.py
+make_svg.py
