@@ -14,6 +14,7 @@ export default class Game {
     this.score = 0;
     this.misses = 0;
     this.currentCellIndex = -1;
+    this.lastCellIndex = -1;
     this.hit = false;
     this.timerId = null;
     this.playing = false;
@@ -29,6 +30,7 @@ export default class Game {
     this.score = 0;
     this.misses = 0;
     this.currentCellIndex = -1;
+    this.lastCellIndex = -1;
     this.hit = false;
     this.playing = true;
     this.scoreBoard.update(this.score, this.misses);
@@ -67,7 +69,10 @@ export default class Game {
   }
 
   placeGoblin() {
-    this.currentCellIndex = this.board.getRandomCellIndex(this.currentCellIndex);
+    // Гоблин не появляется в одной и той же ячейке два раза подряд,
+    // даже если по нему только что кликнули: исключаем lastCellIndex.
+    this.currentCellIndex = this.board.getRandomCellIndex(this.lastCellIndex);
+    this.lastCellIndex = this.currentCellIndex;
     this.hit = false;
     this.board.showGoblin(this.currentCellIndex);
   }

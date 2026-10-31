@@ -19,7 +19,7 @@ export default class Board {
       const cell = document.createElement('div');
       cell.classList.add('cell');
       cell.dataset.index = i;
-      this.element.appendChild(cell);
+      this.element.append(cell);
       this.cells.push(cell);
     }
   }
@@ -40,7 +40,7 @@ export default class Board {
     img.src = goblinImg;
     img.alt = 'Гоблин';
     img.classList.add('goblin');
-    this.cells[index].appendChild(img);
+    this.cells[index].append(img);
     this.goblinElement = img;
   }
 
